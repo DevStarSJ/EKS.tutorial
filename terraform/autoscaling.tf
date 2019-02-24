@@ -36,7 +36,9 @@ resource "aws_autoscaling_group" "demo" {
   min_size                  = "${var.eks_worker_min_size}"
   health_check_grace_period = "${var.eks_worker_health_check_grace_period}"
   launch_configuration      = "${aws_launch_configuration.demo.id}"
-  vpc_zone_identifier       = [ "${split(",", "${aws_default_subnet.a.id},${aws_default_subnet.c.id}")}" ]
+  vpc_zone_identifier       = ["${aws_subnet.demo.*.id}"]
+  
+  #[ "${split(",", "${aws_default_subnet.a.id},${aws_default_subnet.c.id}")}" ]
 
   tag {
     key                 = "Name"

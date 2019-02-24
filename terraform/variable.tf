@@ -2,7 +2,7 @@ variable "access_key" { }
 variable "secret_key" { }
 variable "region" { }
 
-variable "default_internet_gateway_id" { }
+# variable "default_internet_gateway_id" { }
 
 ########################
 ## EKS

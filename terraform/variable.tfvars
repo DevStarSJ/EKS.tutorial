@@ -6,7 +6,7 @@ secret_key = "YOUR_SECRET_KEY"
 
 region = "ap-northeast-2"
 
-default_internet_gateway_id = "igw-3a18cb52"
+# default_internet_gateway_id = "igw-3a18cb52"
 
 ########################
 ## EKS

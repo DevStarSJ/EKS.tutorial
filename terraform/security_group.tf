@@ -1,7 +1,9 @@
 resource "aws_security_group" "demo-cluster" {
   name        = "terraform-eks-demo-cluster"
   description = "Cluster communication with worker nodes"
-  vpc_id      = "${aws_default_vpc.default.id}"
+  vpc_id      = "${aws_vpc.demo.id}"
+  
+  #"${aws_default_vpc.default.id}"
 
   egress {
     from_port   = 0
@@ -31,8 +33,10 @@ resource "aws_security_group_rule" "demo-cluster-ingress-workstation-https" {
 resource "aws_security_group" "demo-node" {
   name        = "terraform-eks-demo-node"
   description = "Security group for all nodes in the cluster"
-  vpc_id      = "${aws_default_vpc.default.id}"
-
+  vpc_id      =  "${aws_vpc.demo.id}"
+  
+  #"${aws_default_vpc.default.id}"
+  
   egress {
     from_port   = 0
     to_port     = 0

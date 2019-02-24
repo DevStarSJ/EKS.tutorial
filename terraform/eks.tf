@@ -4,8 +4,8 @@ resource "aws_eks_cluster" "demo" {
 
   vpc_config {
     security_group_ids = ["${aws_security_group.demo-cluster.id}"]
-    subnet_ids         =  [ "${split(",", "${aws_default_subnet.a.id},${aws_default_subnet.c.id}")}" ]
-    
+    subnet_ids         =  ["${aws_subnet.demo.*.id}"]
+    # [ "${split(",", "${aws_default_subnet.a.id},${aws_default_subnet.c.id}")}" ]
     #["${aws_subnet.demo.*.id}"]
   }
 }
