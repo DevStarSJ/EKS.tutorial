@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: testapp-deployment
+  labels:
+    app: testapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: testapp
+  template:
+    metadata:
+      labels:
+        app: testapp
+    spec:
+      containers:
+      - name: testapp
+        image: 025325660074.dkr.ecr.ap-northeast-2.amazonaws.com/octopos_server:latest
+        livenessProbe:
+          httpGet:
+            path: /v1/menus
+            port: 3000
+          initialDelaySeconds: 15
+        readinessProbe:
+          exec:
+            command:
+            - ls
+        ports:
+        - name: http-server
+          containerPort: 3000
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 300m

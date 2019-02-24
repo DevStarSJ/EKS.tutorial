@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: testapp-service
+spec:
+  selector:
+    app: testapp
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: http-server
+  type: LoadBalancer
